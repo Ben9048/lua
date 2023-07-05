@@ -19,7 +19,7 @@ local script_vers_text = "1.00"
 local update_url = "https://raw.githubusercontent.com/Ben9048/lua/main/update.ini?token=GHSAT0AAAAAACDSWBWIRKG5PFAUC7CSIWCGZFF4CRA"
 local update_path = getWorkingDirectory() .. "/update.ini" -- link
 
-local scirpt_url = "" -- link
+local scirpt_url = "https://raw.githubusercontent.com/Ben9048/lua/main/opengate.lua?token=GHSAT0AAAAAACDSWBWJPWL5WMDNTIJJSEY6ZFF43OA" -- link
 local script_path = thisScript().path
 
 function main()
@@ -31,7 +31,7 @@ function main()
         if status == dlstatus.STATUS_ENDDOWNLOADDATA then
             updateIni = inicfg.load(nill, update_path)
            if tonumber(updateIni.info.vers) > script_vers then
-            sampAddChatMessage("{ffffff}Есть обновление! Версия: " .. updateIni.info.vers_text, -1)
+            sampAddChatMessage("{ff7300}[Ben_Puls]: {ffffff}Есть обновление! Версия: {808080}" .. updateIni.info.vers_text, -1)
             update_state = true
            end
            os.remove(update_path)
@@ -49,7 +49,7 @@ function main()
                         if status == dlstatus.STATUS_ENDDOWNLOADDATA then
                             updateIni = inicfg.load(nill, update_path)
                     
-                                sampAddChatMessage("{ffffff}Скрипт успешно обновлён! Версия: " .. updateIni.info.vers_text, -1)
+                                sampAddChatMessage("{ff7300}[Ben_Puls]: {ffffff}Скрипт успешно обновлён! Версия: {808080}" .. updateIni.info.vers_text, -1)
                                 thisScript():reload()
                                                     
                         end
@@ -65,7 +65,7 @@ end
 end
 
 function cmd_update(arg)
-	sampShowDialog(1000, "Заголовок", "Описание", "Закрыть", "", 0)
+	sampShowDialog(1000, "Заголовок", "Описание\nУра, обновление сработало!", "Закрыть", "", 0)
 
 
 end
