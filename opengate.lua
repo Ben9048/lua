@@ -26,10 +26,10 @@ function main()
 	repeat wait(0) until isSampAvailable()
 	sampAddChatMessage("{ff7300}[Ben_Puls]: {ffffff}Fast open gate", -1)
 	wait(2000)
-
+    sampRegisterChatCommand("update", cmd_update)
 	downloadUrlToFile(update_url, update_path, function(id, status) 
         if status == dlstatus.STATUS_ENDDOWNLOADDATA then
-            updateIni = inicfg.load(nill, update_path)
+            updateIni = inicfg.load(nil, update_path)
            if tonumber(updateIni.info.vers) > script_vers then
             sampAddChatMessage("{ff7300}[Ben_Puls]: {ffffff}Есть обновление! Версия: {808080}" .. updateIni.info.vers_text, -1)
             update_state = true
@@ -56,17 +56,19 @@ function main()
                     break
                  end
 
-          if not sampIsChatInputActive() then
-	  if isKeyJustPressed(VK_H) then
-			sampSendChat("/opengate")
-	  end
-end
+       
 end
 
 function cmd_update(arg)
-	sampShowDialog(1000, "Заголовок", "Описание\nУра, ты обновился!", "Закрыть", "", 0)
+	sampShowDialog(1000, "Заголовок", "Описание\n v2.0", "Закрыть", "", 0)
 
 
+end
+
+if not sampIsChatInputActive() then
+    if isKeyJustPressed(VK_H) then
+          sampSendChat("/opengate")
+    end
 end
 
 end
